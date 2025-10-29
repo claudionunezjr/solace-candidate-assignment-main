@@ -3,12 +3,9 @@ import postgres from "postgres";
 
 const setup = () => {
   if (!process.env.DATABASE_URL) {
-    console.error("DATABASE_URL is not set");
-    return {
-      select: () => ({
-        from: () => [],
-      }),
-    };
+    const DB_NOT_SET_ERROR = "DATABASE_URL is not set";
+    console.error(DB_NOT_SET_ERROR);
+    throw new Error(DB_NOT_SET_ERROR);
   }
 
   // for query purposes
