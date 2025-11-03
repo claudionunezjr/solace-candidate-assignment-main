@@ -1,5 +1,6 @@
 'use client';
 
+import { cn } from '@/app/_utils';
 import Form from 'next/form';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useDebouncedCallback } from 'use-debounce';
@@ -60,7 +61,11 @@ export const AdvocatesSearchForm = () => {
                 />
 
                 <button
-                    className="border rounded px-2 py-1 cursor-pointer hover:bg-gray-100"
+                    className={cn('border rounded px-2 py-1', {
+                        'cursor-pointer hover:bg-gray-100': query,
+                        'opacity-50 text-gray-400': !query
+                    })}
+                    disabled={!query}
                     type="reset"
                 >
                     Show all
