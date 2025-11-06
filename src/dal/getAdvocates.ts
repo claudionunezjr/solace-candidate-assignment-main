@@ -26,14 +26,12 @@ export type GetAdvocatesSearchParams = {
 export const getAdvocates = async (
     searchParams: GetAdvocatesSearchParams = {}
 ): Promise<AdvocateResponseData> => {
-    const searchParamsEntries = Object.entries(searchParams);
-    const searchParamsString = searchParamsEntries.length
-        ? `?${searchParamsEntries
-              .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
-              .join('&')}`
-        : '';
+    const searchParamsString = new URLSearchParams(
+        searchParams as Record<string, string>
+    );
+
     const response = await fetch(
-        `${process.env.API_URL}/advocates${searchParamsString}`
+        `${process.env.API_URL}/advocates?${searchParamsString}`
     );
 
     return await response.json();
