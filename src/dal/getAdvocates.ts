@@ -32,7 +32,7 @@ export const getAdvocates = async (
     );
 
     if (urlSearchParams.size > 0) {
-        fetchUrl += `?${urlSearchParams.toString()}`;
+        fetchUrl += `?${urlSearchParams}`;
     }
 
     return await (await fetch(fetchUrl)).json();
