@@ -26,13 +26,14 @@ export type GetAdvocatesSearchParams = {
 export const getAdvocates = async (
     searchParams: GetAdvocatesSearchParams = {}
 ): Promise<AdvocateResponseData> => {
-    const searchParamsString = new URLSearchParams(
+    let fetchUrl = `${process.env.API_URL}/advocates`;
+    const urlSearchParams = new URLSearchParams(
         searchParams as Record<string, string>
     );
 
-    const response = await fetch(
-        `${process.env.API_URL}/advocates?${searchParamsString}`
-    );
+    if (urlSearchParams.size > 0) {
+        fetchUrl += `?${urlSearchParams.toString()}`;
+    }
 
-    return await response.json();
+    return await (await fetch(fetchUrl)).json();
 };
