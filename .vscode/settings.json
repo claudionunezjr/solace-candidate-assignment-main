@@ -1,0 +1,17 @@
+{
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "files.associations": {
+        "*.css": "tailwindcss"
+    },
+    "tailwindCSS.classAttributes": [".*Class(es)?", "class", "className"],
+    "tailwindCSS.classFunctions": ["cn"],
+    "prettier.configPath": ".prettierrc",
+    "prettier.requireConfig": true,
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+}
